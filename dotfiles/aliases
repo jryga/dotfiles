@@ -1,0 +1,54 @@
+#!/usr/bin/env sh
+
+# System
+alias sdn='sudo shutdown -h now'
+alias srn='sudo shutdown -r now'
+
+# File ops
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias mkd='mkdir -pv'
+
+## SSH
+alias kcore_bk='ssh -p 2883 josh@45.77.144.138'
+alias kcore='ssh -p 2883 josh@10.19.1.1'
+alias pi='ssh -p 6969 josh@127.0.0.1'
+alias dkp='ssh josh@192.168.1.2'
+alias mountpi='sudo ext4fuse /dev/disk2s2 /Volumes/rpi -o allow_other'
+
+## Docker
+alias duf='docker-compose up --force-recreate'
+alias dufd='docker-compose up --force-recreate -d'
+
+## Dotdrop
+alias dotdrop='$HOME/dotfiles/dotdrop.sh --cfg=$HOME/dotfiles/config.yaml'
+
+## Colorize grep
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+# MacOS
+if [[ $OSTYPE == darwin* ]]; then
+alias rm='rm -vi'
+alias ls='ls -G'
+alias lo='ls -Ghl'
+alias ll='ls -Ghal'
+fi
+
+# Linux-GNU
+if [[ $OSTYPE == linux-gnu ]]; then
+alias rm='rm -vI'
+alias ls='ls --color=auto'
+alias lo='ls --color=auto -lh'
+alias ll='ls --color=auto -lha'
+fi
+
+# XBPS/Void
+if which xbps-install > /dev/null 2>&1; then
+alias xin='sudo xbps-install'
+alias xup='sudo xbps-install -Su'
+alias xqr='sudo xbps-query -Rs'
+alias xrm='sudo xbps-remove'
+alias xrma='sudo xbps-remove -R'
+fi
