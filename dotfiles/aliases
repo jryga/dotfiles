@@ -1,0 +1,88 @@
+#!/usr/bin/env sh
+
+# System
+alias sudo='sudo '
+alias sdn='sudo shutdown -h now'
+alias srn='sudo reboot'
+alias hg='history 0 | grep --color=auto'
+alias vv='vim ~/.vimrc'
+alias aa='vim ~/.aliases'
+alias tt='vim ~/.tmux.conf'
+alias pg='ps -ef | grep'
+alias svim='sudo -E vim'
+alias mine='chown $USER:$USER'
+alias mkroot='chown root:root'
+alias nkey='ssh-keygen -t ed25519 -a 200 -C "${USER}@${HOST}"'
+alias opt='sudo watch -n 1 iptables -vnL'
+alias optt='sudo watch -n 1 ip6tables -vnL'
+
+pycharm () {
+    /opt/pycharm-community/bin/pycharm.sh > /dev/null 2>&1 $@ &
+}
+
+ggg () {
+    g++ --std=c++14 -Wall -O2 $@ && pbpaste | ./a.out
+}
+
+# tmux
+alias bye='tmux detach'
+alias tst='if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then; tmux new-session -A -s main; else; echo "Already using TMUX"; (exit 1); fi'
+
+# File ops
+alias cp='cp -iv'
+alias cpv='rsync -ah --info=progress2'
+alias mv='mv -iv'
+alias mkd='mkdir -pv'
+
+## SSH
+alias kcore_bk='ssh -p 2883 josh@45.77.144.138'
+alias kcore='ssh -p 2883 josh@10.19.1.1'
+alias pi='ssh -p 6969 josh@127.0.0.1'
+alias dkp='ssh josh@192.168.1.2'
+alias mountpi='sudo ext4fuse /dev/disk2s2 /Volumes/rpi -o allow_other'
+
+## Docker
+alias duf='docker-compose up --force-recreate'
+alias dufd='docker-compose up --force-recreate -d'
+
+## Dotdrop
+alias dotdrop='DOTDROP_AUTOUPDATE=no $HOME/dotfiles/dotdrop.sh --cfg=$HOME/dotfiles/config.yaml'
+
+## Colorize grep
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+# MacOS
+if [[ $OSTYPE == darwin* ]]; then
+alias rm='rm -vi'
+alias ls='ls -G'
+alias lo='ls -Ghl'
+alias ll='ls -Ghal'
+fi
+
+# Linux-GNU
+if [[ $OSTYPE == linux-gnu ]]; then
+alias work="xfreerdp /multimon /sound /microphone /auto-reconnect -themes /gfx +gfx-progressive -bitmap-cache /v:192.168.1.17:9506 /u:jkraitbe@ford.com"
+alias rm='rm -vI'
+alias ls='ls --color=auto'
+alias lo='ls --color=auto -lh'
+alias ll='ls --color=auto -lha'
+
+grub_reboot_to () {
+    title=$(sudo grep -i "$1" /boot/grub/grub.cfg | grep -m1 menuentry | cut -d "'" -f 2)
+    if [ -n $title ]; then
+        sudo grub-reboot "$title" && sudo reboot
+    else
+        (exit 1)
+    fi
+}
+
+alias gtw='grub_reboot_to windows'
+alias gtl='grub_reboot_to void'
+fi
+
+# XBPS/Void
+if which xbps-install > /dev/null 2>&1; then
+alias vpm='sudo vpm'
+fi
