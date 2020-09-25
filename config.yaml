@@ -1,28 +1,31 @@
 actions:
-  vundle: vim +VundleClean! +VundleInstall +VundleInstall! +qall
+  vundle-install: vim +VundleClean! +VundleInstall +VundleInstall! +qall
+  tpm-install: ~/.tmux/plugins/tpm/bin/install_plugins
 config:
   backup: true
   create: true
   dotpath: dotfiles
 dotfiles:
-  d_vundle:
-    src: vim/bundle/Vundle.vim
-    dst: ~/.vim/bundle/Vundle.vim
-    link: link
   f_vimrc:
     src: vimrc
     dst: ~/.vimrc
     link: link
-    actions:
-    - vundle
-  d_tpm:
-    src: tmux/plugins/tpm
-    dst: ~/.tmux/plugins/tpm
+  d_vundle:
+    src: vim/bundle/Vundle.vim
+    dst: ~/.vim/bundle/Vundle.vim
     link: link
+    actions:
+    - vundle-install
   f_tmux.conf:
     src: tmux.conf
     dst: ~/.tmux.conf
     link: link
+  d_tpm:
+    src: tmux/plugins/tpm
+    dst: ~/.tmux/plugins/tpm
+    link: link
+    actions:
+    - tpm-install
   d_p10k:
     src: config/powerlevel10k
     dst: ~/.config/powerlevel10k
@@ -46,12 +49,12 @@ dotfiles:
 profiles:
   Joshuas-MacBook-Pro.local:
     dotfiles:
-    - d_vundle
     - f_vimrc
-    - d_tpm
+    - d_vundle
     - f_tmux.conf
-    - d_p10k
+    - d_tpm
     - f_zshrc
     - f_aliases
+    - d_p10k
     - f_condarc
     - f_p10k.zsh
