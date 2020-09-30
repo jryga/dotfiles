@@ -3,6 +3,7 @@
 # System
 alias sdn='sudo shutdown -h now'
 alias srn='sudo shutdown -r now'
+alias hg='history 0 | grep --color=auto'
 
 # File ops
 alias cp='cp -iv'

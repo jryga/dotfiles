@@ -29,9 +29,6 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/vim-peekaboo'
-
-Plugin 'vim-scripts/taglist.vim'
-
 Plugin 'tomtom/tinykeymap_vim'
 
 Plugin 'fatih/vim-go'
