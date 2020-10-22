@@ -2,8 +2,10 @@ set nocompatible
 " filetype plugin on
 syntax on
 
-
 filetype off                  " required
+
+colorscheme ron
+
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim

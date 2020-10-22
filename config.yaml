@@ -47,7 +47,7 @@ dotfiles:
     dst: ~/.p10k.zsh
     link: link
 profiles:
-  Joshuas-MacBook-Pro.local:
+  home:
     dotfiles:
     - f_vimrc
     - d_vundle
