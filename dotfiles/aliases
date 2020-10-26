@@ -3,7 +3,7 @@
 # System
 alias sudo='sudo '
 alias sdn='sudo shutdown -h now'
-alias srn='sudo shutdown -r now'
+alias srn='sudo reboot'
 alias hg='history 0 | grep --color=auto'
 alias vv='vim ~/.vimrc'
 alias aa='vim ~/.aliases'
@@ -63,6 +63,18 @@ alias rm='rm -vI'
 alias ls='ls --color=auto'
 alias lo='ls --color=auto -lh'
 alias ll='ls --color=auto -lha'
+
+grub_reboot_to () {
+    title=$(sudo grep -i "$1" /boot/grub/grub.cfg | grep -m1 menuentry | cut -d "'" -f 2)
+    if [ -n $title ]; then
+        sudo grub-reboot "$title" && sudo reboot
+    else
+        (exit 1)
+    fi
+}
+
+alias gtw='grub_reboot_to windows'
+alias gtl='grub_reboot_to void'
 fi
 
 # XBPS/Void

@@ -1,6 +1,13 @@
 actions:
-  vundle-install: vim +VundleClean! +VundleInstall +VundleInstall! +qall
-  tpm-install: ~/.tmux/plugins/tpm/bin/install_plugins
+  pre:
+    vundle-install: test -e ~/.vim/bundle/Vundle.vim || (mkdir -p ~/.vim/bundle; git
+      clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim)
+    tpm-install: test -e ~/.tmux/plugins/tpm/.git || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    oh-my-zsh-install: test -e ~/.oh-my-zsh/.git || sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+      | sed '/exec zsh/d')"
+    p10k-install: test -e ~/.oh-my-zsh/custom/themes/powerlevel10k/.git || git clone
+      --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
+  vundle: vim +VundleClean! +VundleInstall +VundleInstall! +qall
 config:
   backup: true
   create: true
@@ -10,30 +17,19 @@ dotfiles:
     src: vimrc
     dst: ~/.vimrc
     link: link
-  d_vundle:
-    src: vim/bundle/Vundle.vim
-    dst: ~/.vim/bundle/Vundle.vim
-    link: link
-    actions:
-    - vundle-install
   f_tmux.conf:
     src: tmux.conf
     dst: ~/.tmux.conf
     link: link
-  d_tpm:
-    src: tmux/plugins/tpm
-    dst: ~/.tmux/plugins/tpm
-    link: link
     actions:
     - tpm-install
-  d_p10k:
-    src: config/powerlevel10k
-    dst: ~/.config/powerlevel10k
-    link: link
   f_zshrc:
     src: zshrc
     dst: ~/.zshrc
     link: link
+    actions:
+    - oh-my-zsh-install
+    - p10k-install
   f_aliases:
     src: aliases
     dst: ~/.aliases
@@ -50,11 +46,8 @@ profiles:
   home:
     dotfiles:
     - f_vimrc
-    - d_vundle
     - f_tmux.conf
-    - d_tpm
     - f_zshrc
     - f_aliases
-    - d_p10k
     - f_condarc
     - f_p10k.zsh
