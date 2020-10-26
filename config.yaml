@@ -17,6 +17,9 @@ dotfiles:
     src: vimrc
     dst: ~/.vimrc
     link: link
+    actions:
+    - vundle-install
+    - vundle
   f_tmux.conf:
     src: tmux.conf
     dst: ~/.tmux.conf
