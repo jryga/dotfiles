@@ -13,6 +13,8 @@ alias svim='sudo -E vim'
 alias mine='chown $USER:$USER'
 alias mkroot='chown root:root'
 alias nkey='ssh-keygen -t ed25519 -a 200 -C "${USER}@${HOST}"'
+alias opt='sudo watch -n 1 iptables -vnL'
+alias optt='sudo watch -n 1 ip6tables -vnL'
 
 pycharm () {
     /opt/pycharm-community/bin/pycharm.sh > /dev/null 2>&1 $@ &
@@ -21,7 +23,7 @@ pycharm () {
 
 # tmux
 alias bye='tmux detach'
-alias tst='if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then; exec tmux new-session -A -s main; else; echo "Already using TMUX"; (exit 1); fi'
+alias tst='if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then; tmux new-session -A -s main; else; echo "Already using TMUX"; (exit 1); fi'
 
 # File ops
 alias cp='cp -iv'
