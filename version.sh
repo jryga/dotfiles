@@ -9,7 +9,7 @@ set -x
 
 export GITHUB_API=
 export GITHUB_USER=$(git config --get user.name)
-export GITHUB_REPO=$(git remote get-url origin | sed -e 's/.*://' -e 's/.git$//')
+export GITHUB_REPO=$(basename $(git remote get-url origin) | sed -e 's/.git$//')
 
 # Target branch or SHA
 TARGET='master'
@@ -66,7 +66,8 @@ git push \
 
 
 echo 'Create release'
-github-release info $GIT_TAG \
+github-release info \
+        --tag $GIT_TAG \
     || github-release release \
         --target "$TARGET" \
         --tag "$GIT_TAG" \
