@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dotfiles"
-version = "0.1.2"
+version = "0.1.3"
 description = ""
 authors = ["joshuakraitberg <joshua.kraitberg@gmail.com>"]
 
