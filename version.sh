@@ -53,8 +53,6 @@ poetry version "$VERSION" \
     && git tag "$GIT_TAG" \
     || { echo 'Could not bump version locally'; exit 4; }
 
-exit
-
 
 echo 'Update origin with new tag'
 git push \
