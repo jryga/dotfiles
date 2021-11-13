@@ -20,6 +20,9 @@ pycharm () {
     /opt/pycharm-community/bin/pycharm.sh > /dev/null 2>&1 $@ &
 }
 
+ggg () {
+    g++ --std=c++14 -Wall -O2 $@ && pbpaste | ./a.out
+}
 
 # tmux
 alias bye='tmux detach'

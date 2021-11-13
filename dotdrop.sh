@@ -21,13 +21,6 @@ opwd=$(pwd)
 cfg="${cur}/config.yaml"
 sub="dotdrop"
 
-# pivot
-cd "${cur}" || { echo "Directory \"${cur}\" doesn't exist, aborting." && exit 1; }
-# init/update the submodule
-if [ "${DOTDROP_AUTOUPDATE-yes}" = yes ] ; then
-  git submodule update --init --recursive
-  git submodule update --remote dotdrop
-fi
 # launch dotdrop
 PYTHONPATH=dotdrop python3 -m dotdrop.dotdrop "${args[@]}"
 ret="$?"
