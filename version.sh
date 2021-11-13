@@ -2,12 +2,13 @@
 
 # github-release -> go install github.com/github-release/github-release@v0.10.0
 
-#GITHUB_TOKEN='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'
-GITHUB_USER=$(git config --get user.name)
-GITHUB_REPO=$(git remote get-url origin)
 
+GITHUB_TOKEN='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'
 
 set -x
+
+GITHUB_USER=$(git config --get user.name)
+GITHUB_REPO=$(git remote get-url origin)
 
 # Required format: X.X.X, where X is int
 VERSION=$1
