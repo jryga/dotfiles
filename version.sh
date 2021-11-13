@@ -1,11 +1,16 @@
 #!/usr/bin/env sh
 
-# github-release -> go install github.com/github-release/github-release@v0.10.0
 
 set -x
 
-export GITHUB_API=
-export GITHUB_USER=$(git config --get user.name)
+
+# Install requirements
+go install github.com/github-release/github-release@v0.10.0
+
+
+# GITHUB_API to set URL
+# GITHUB_TOKEN to set token
+export GITHUB_USER=$(dirname $(git remote get-url origin | sed 's/.*://') )
 export GITHUB_REPO=$(basename $(git remote get-url origin) | sed -e 's/.git$//')
 
 # Target branch or SHA
@@ -29,7 +34,7 @@ shift
 # Sequence of 
 GLOBS="$@"
 
-#set +x
+set +x
 
 
 echo 'Parse version'
@@ -62,11 +67,13 @@ git push \
     || { echo 'Failed to update origin'; exit 5; }
 
 
-echo 'Create release'
+echo 'Ensure release is not created already'
 ! github-release info \
         --tag "$GIT_TAG" \
     || { echo 'Release already created'; exit 6; }
 
+
+echo 'Create release'
 github-release release \
         --target "$TARGET" \
         --tag "$GIT_TAG" \
