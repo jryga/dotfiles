@@ -42,7 +42,7 @@ echo 'Ensure clean git stage'
 
 
 echo 'Ensure tag does not exist already'
-[[ "$(git tag -l "$GIT_TAG")" ]] \
+[[ -z $(git tag -l "$GIT_TAG") ]] \
     || { echo "Tag already existed: ${GIT_TAG}"; exit 3; }
 
 
@@ -50,8 +50,10 @@ echo 'Set the version and create the commit'
 poetry version "$VERSION" \
     && git add . \
     && git commit -m "Bump version to ${GIT_TAG}" \
-    && git tag "$GIT_TAG"
+    && git tag "$GIT_TAG" \
     || { echo 'Could not bump version locally'; exit 4; }
+
+exit
 
 
 echo 'Update origin with new tag'
