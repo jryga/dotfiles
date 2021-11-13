@@ -64,7 +64,7 @@ git push \
 
 echo 'Create release'
 github-release info \
-        --tag $GIT_TAG \
+        --tag "$GIT_TAG" \
     || github-release release \
         --target "$TARGET" \
         --tag "$GIT_TAG" \
