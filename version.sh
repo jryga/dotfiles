@@ -11,6 +11,9 @@ export GITHUB_API=
 export GITHUB_USER=$(git config --get user.name)
 export GITHUB_REPO=$(git remote get-url origin | sed -e 's/.*://' -e 's/.git$//')
 
+# Target branch or SHA
+TARGET='master'
+
 # Required format: X.X.X, where X is int
 VERSION=$1
 shift
@@ -65,7 +68,8 @@ git push \
 echo 'Create release'
 github-release info $GIT_TAG \
     || github-release release \
-        --tag  "$GIT_TAG" \
+        --target "$TARGET" \
+        --tag "$GIT_TAG" \
         --name "$NAME" \
         --description "$DESCRIPTION" \
     || { echo 'Failed to create release'; exit 6; }
