@@ -65,12 +65,14 @@ git push \
 echo 'Create release'
 github-release info \
         --tag "$GIT_TAG" \
-    || github-release release \
+    || { echo 'Release already created'; exit 6; }
+
+github-release release \
         --target "$TARGET" \
         --tag "$GIT_TAG" \
         --name "$NAME" \
         --description "$DESCRIPTION" \
-    || { echo 'Failed to create release'; exit 6; }
+    || { echo 'Failed to create release'; exit 7; }
 
 
 echo 'Upload files'
