@@ -2,9 +2,6 @@
 
 # github-release -> go install github.com/github-release/github-release@v0.10.0
 
-
-export GITHUB_TOKEN='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'
-
 set -x
 
 export GITHUB_API=
