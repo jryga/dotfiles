@@ -29,7 +29,7 @@ shift
 # Sequence of 
 GLOBS="$@"
 
-set +x
+#set +x
 
 
 echo 'Parse version'
