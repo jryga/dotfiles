@@ -63,7 +63,7 @@ git push \
 
 
 echo 'Create release'
-github-release info \
+! github-release info \
         --tag "$GIT_TAG" \
     || { echo 'Release already created'; exit 6; }
 
