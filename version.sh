@@ -58,7 +58,7 @@ poetry version "$VERSION" \
 
 echo 'Update origin with new tag'
 git push \
-    && git push --tags "$GIT_TAG" \
+    && git push origin "$GIT_TAG" \
     || { echo 'Failed to update origin'; exit 5; }
 
 
