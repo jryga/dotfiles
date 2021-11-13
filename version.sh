@@ -78,7 +78,7 @@ for glob in $GLOBS; do
         github-release upload
             --tag "$GIT_TAG" \
             --name "$(basename $file)" \
-            --file "$file"
+            --file "$file" \
         || echo "Failed to upload: ${file}"
     done
 done
