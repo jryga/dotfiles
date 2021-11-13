@@ -77,7 +77,7 @@ github-release release \
 
 echo 'Upload files'
 for glob in $GLOBS; do
-    for file in$(find $glob); do
+    for file in $(find $glob); do
         echo "Upload: ${file}"
         github-release upload
             --tag "$GIT_TAG" \
