@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-:<<EOF
+: <<'EOF'
 # push-release
 Create a tag and release using 
 
