@@ -1,20 +1,44 @@
 #!/usr/bin/env sh
 
+:<<EOF
+# push-release
+Create a tag and release using 
+
+## Requirements
+`go install github.com/github-release/github-release@v0.10.0`
+
+## Required ENV variables
+GITHUB_API: None to use GitHub, set to use other
+GITHUB_TOKEN: Your API token (full repo permissions)
+
+## Optional ENV variables
+GITHUB_AUTH_USER: User that owns token, uses user/project if none
+TARGET: Branch or SHA to use when creating tag
+
+## Arguements
+VERSION: Required format: X.X.X, where X is int
+NAME: Name of release that will be created
+DESCRIPTION: What will constitute description of release
+GLOBS: Sequence of file globs to upload in to release
+
+### Simple use
+`./push-release.sh 0.1.21 "release" "not a description"`
+
+### Upload files with release
+`./push-release.sh 0.1.21 "release" "not a description" bin/* dist/thing.exe`
+EOF
+
 
 set -x
 
-
-# Install requirements
-go install github.com/github-release/github-release@v0.10.0
-
-
 # GITHUB_API to set URL
 # GITHUB_TOKEN to set token
+# GITHUB_AUTH_USER to set auth user (optional)
 export GITHUB_USER=$(dirname $(git remote get-url origin | sed 's/.*://') )
 export GITHUB_REPO=$(basename $(git remote get-url origin) | sed -e 's/.git$//')
 
 # Target branch or SHA
-TARGET='master'
+TARGET="${TARGET:-master}"
 
 # Required format: X.X.X, where X is int
 VERSION=$1
@@ -31,7 +55,7 @@ shift
 DESCRIPTION=$1
 shift
 
-# Sequence of 
+# Sequence of file globs to upload in to release
 GLOBS="$@"
 
 set +x
@@ -93,3 +117,4 @@ for glob in $GLOBS; do
         || echo "Failed to upload: ${file}"
     done
 done
+
