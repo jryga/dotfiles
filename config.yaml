@@ -1,11 +1,10 @@
 actions:
   pre:
-    vundle-install: test -e ~/.vim/bundle/Vundle.vim || (mkdir -p ~/.vim/bundle; git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim)
-    tpm-install: test -e ~/.tmux/plugins/tpm/.git || (mkdir -p ~/.tmux/plugins; git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm)
-    oh-my-zsh-install: test -e ~/.oh-my-zsh/.git || sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-      | sed '/exec zsh/d')"
-    p10k-install: test -e ~/.oh-my-zsh/custom/themes/powerlevel10k/.git || git clone
-      --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
+    vundle-install: test -e ~/.vim/bundle/Vundle.vim || (mkdir -p ~/.vim/bundle; git
+      clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim)
+    tpm-install: test -e ~/.tmux/plugins/tpm/.git || (mkdir -p ~/.tmux/plugins; git
+      clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm)
+  zinit-install: sh -c "$(curl -fsSL https://git.io/zinit-install)"
   vundle: vim +VundleClean! +VundleInstall +VundleInstall! +qall
 config:
   backup: true
@@ -30,8 +29,7 @@ dotfiles:
     dst: ~/.zshrc
     link: link
     actions:
-    - oh-my-zsh-install
-    - p10k-install
+    - zinit-install
   f_aliases:
     src: aliases
     dst: ~/.aliases
@@ -44,6 +42,10 @@ dotfiles:
     src: p10k.zsh
     dst: ~/.p10k.zsh
     link: link
+  f_zprofile:
+    src: zprofile
+    dst: ~/.zprofile
+    link: link
 profiles:
   home:
     dotfiles:
@@ -53,3 +55,4 @@ profiles:
     - f_aliases
     - f_condarc
     - f_p10k.zsh
+    - f_zprofile

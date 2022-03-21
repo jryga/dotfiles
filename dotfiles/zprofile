@@ -1,0 +1,12 @@
+if [ -f ~/.zshrc ];
+then 
+    source  ~/.zshrc; 
+fi 
+
+if [ -f ~/.aliases ];
+then 
+    source ~/.aliases
+fi 
+
+PATH=$PATH:$HOME/bin export PATH
+

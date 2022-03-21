@@ -139,7 +139,7 @@ call tinykeymap#Map('winsize', '<', 'wincmd <')
 call tinykeymap#Map('winsize', '>', 'wincmd >') 
 
 " Ansible Vault: securing your editor
-if expand('%:h') =~ '~/.ansible/tmp'
+if expand('%:h') =~ '\~/.ansible/tmp'
     " Disable swapfiles that act like an autosave in case of crash or interruption.
     set noswapfile
     " Disable creation of backup files.

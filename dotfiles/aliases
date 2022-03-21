@@ -8,6 +8,8 @@ alias hg='history 0 | grep --color=auto'
 alias vv='vim ~/.vimrc'
 alias aa='vim ~/.aliases'
 alias tt='vim ~/.tmux.conf'
+alias zz="vim ~/.zshrc"
+alias rr="source ~/.zshrc"
 alias pg='ps -ef | grep'
 alias svim='sudo -E vim'
 alias mine='chown $USER:$USER'
