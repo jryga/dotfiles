@@ -137,3 +137,16 @@ call tinykeymap#Map('winsize', '+', 'wincmd +')
 call tinykeymap#Map('winsize', '-', 'wincmd -') 
 call tinykeymap#Map('winsize', '<', 'wincmd <') 
 call tinykeymap#Map('winsize', '>', 'wincmd >') 
+
+" Ansible Vault: securing your editor
+if expand('%:h') =~ '~/.ansible/tmp'
+    " Disable swapfiles that act like an autosave in case of crash or interruption.
+    set noswapfile
+    " Disable creation of backup files.
+    set nobackup
+    set nowritebackup
+    " Disable the viminfo file from copying data from your current session.
+    set viminfo=
+    " Disable copying to the system clipboard.
+    set clipboard=
+endif
