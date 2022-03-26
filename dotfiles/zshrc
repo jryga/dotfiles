@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -5,7 +7,54 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-#!/usr/bin/env zsh
+# Z-Style
+
+# Load Colors
+autoload -U colors && colors
+
+# Full screen command editor
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*:matches' group 'yes'
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:options' auto-description '%d'
+zstyle ':completion:*:corrections' format ' %F{green}-- %d (errors: %e) --%f'
+zstyle ':completion:*:descriptions' format ' %F{yellow}-- %d --%f'
+zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+zstyle ':completion:*' format ' %F{yellow}-- %d --%f'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' verbose yes
+zstyle ':completion::complete:*' use-cache on
+zstyle ':completion::complete:*' cache-path "$HOME/.zcompcache"
+zstyle ':completion:*' list-colors $LS_COLORS
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))'
+zstyle ':completion:*' rehash true
+# Case-insensitive completions
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+# History.
+HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
+HISTSIZE=100000
+SAVEHIST=5000
+setopt appendhistory notify
+unsetopt beep nomatch
+setopt bang_hist                # Treat The '!' Character Specially During Expansion.
+setopt inc_append_history       # Write To The History File Immediately, Not When The Shell Exits.
+setopt share_history            # Share History Between All Sessions.
+setopt hist_expire_dups_first   # Expire A Duplicate Event First When Trimming History.
+setopt hist_ignore_dups         # Do Not Record An Event That Was Just Recorded Again.
+setopt hist_ignore_all_dups     # Delete An Old Recorded Event If A New Event Is A Duplicate.
+setopt hist_find_no_dups        # Do Not Display A Previously Found Event.
+setopt hist_ignore_space        # Do Not Record An Event Starting With A Space.
+setopt hist_save_no_dups        # Do Not Write A Duplicate Event To The History File.
+setopt hist_verify              # Do Not Execute Immediately Upon History Expansion.
+setopt extended_history         # Show Timestamp In History.
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -28,18 +77,26 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
 
-# Turbo load plugins
-zinit light zdharma-continuum/history-search-multi-word
-zinit light zsh-users/zsh-syntax-highlighting
+# Basic setup
+#zinit light zdharma-continuum/history-search-multi-word
+#zinit light zsh-users/zsh-syntax-highlighting
+zinit wait lucid light-mode for \
+  atinit"zicompinit; zicdreplay" \
+      zdharma-continuum/fast-syntax-highlighting \
+  atload"_zsh_autosuggest_start" \
+      zsh-users/zsh-autosuggestions \
+  blockf atpull'zinit creinstall -q .' \
+      zsh-users/zsh-completions
 
+# Set prompt and theme
 zinit ice svn depth'1'
 zinit light romkatv/powerlevel10k
 
-zinit ice wait'!0' lucid
-zinit snippet OMZ::plugins/git/git.plugin.zsh
-
-zinit ice wait'!0' lucid
-zinit snippet https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/fzf/fzf.plugin.zsh
+# Turbo load plugins
+zinit wait lucid for \
+    OMZP::git \
+    OMZP::tmux \
+    OMZP::fzf
 
 ### End of Zinit's installer chunk
 
