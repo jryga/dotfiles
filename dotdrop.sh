@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
-# author: deadc0de6 (https://github.com/deadc0de6)
-# Copyright (c) 2017, deadc0de6
 
-# check for readlink/realpath presence
-# https://github.com/deadc0de6/dotdrop/issues/6
 rl="readlink -f"
 
 if ! ${rl} "${0}" >/dev/null 2>&1; then
@@ -15,11 +11,22 @@ if ! ${rl} "${0}" >/dev/null 2>&1; then
 fi
 
 # setup variables
+py=python3.9
+ver=1.8.2
+venv="$(dirname "$0")/.venv"
 args=("$@")
 cur=$(dirname "$(${rl} "${0}")")
 opwd=$(pwd)
 cfg="${cur}/config.yaml"
 sub="dotdrop"
+
+# Setup venv
+test -e "$venv" || {
+    "$py" -m venv "$venv"
+    source "$venv/bin/activate"
+    pip install dotdrop==$ver
+}
+source "$venv/bin/activate"
 
 # launch dotdrop
 PYTHONPATH=dotdrop python3 -m dotdrop.dotdrop "${args[@]}"

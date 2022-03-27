@@ -6,6 +6,7 @@ actions:
       clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm)
   zinit-install: sh -c "$(curl -fsSL https://git.io/zinit-install)"
   vundle: vim +VundleClean! +VundleInstall +VundleInstall! +qall
+  tmux-plugins: ~/.tmux/plugins/tpm/bindings/install_plugins
 config:
   backup: true
   create: true
@@ -24,6 +25,7 @@ dotfiles:
     link: link
     actions:
     - tpm-install
+    - tmux-plugins
   f_zshrc:
     src: zshrc
     dst: ~/.zshrc
