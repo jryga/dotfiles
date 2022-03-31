@@ -32,7 +32,6 @@ alias tst='if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ s
 
 # File ops
 alias cp='cp -iv'
-alias cpv='rsync -ah --info=progress2'
 alias mv='mv -iv'
 alias mkd='mkdir -pv'
 

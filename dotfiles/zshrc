@@ -102,7 +102,12 @@ zinit light romkatv/powerlevel10k
 # Turbo load plugins
 zinit wait lucid for \
     OMZP::git \
-    OMZP::fzf
+    OMZP::fzf \
+    OMZP::cp \
+    OMZP::pip \
+    OMZP::extract \
+    OMZP::jsontools \
+    OMZP::colored-man-pages
 
 ### End of Zinit's installer chunk
 
