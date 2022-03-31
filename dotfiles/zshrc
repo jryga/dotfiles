@@ -9,6 +9,13 @@ fi
 
 # Z-Style
 
+# History search using already entered
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+
 # Load Colors
 autoload -U colors && colors
 
@@ -102,6 +109,10 @@ zinit wait lucid for \
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+### Custom binds
+
+# Accept suggestion Ctrl+Space
+#bindkey '^ ' autosuggest-accept
 
 #if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [[ ! "$TERM" = linux ]] && [ -z "$TMUX" ]; then
 #  exec tmux new-session -A -s main
