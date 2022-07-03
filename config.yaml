@@ -12,6 +12,8 @@ config:
   create: true
   dotpath: dotfiles
   minversion: 1.10.3
+  import_variables:
+  - uservariables.yaml
 dotfiles:
   f_vimrc:
     src: vimrc
@@ -49,6 +51,11 @@ dotfiles:
     src: zprofile
     dst: ~/.zprofile
     link: absolute
+  f_gitconfig:
+    src: gitconfig
+    dst: ~/.gitconfig
+    link: absolute
+    template: true
 profiles:
   home:
     dotfiles:
@@ -59,3 +66,8 @@ profiles:
     - f_condarc
     - f_p10k.zsh
     - f_zprofile
+    - f_gitconfig
+uservariables:
+  git_name: "git_name"
+  git_email: "git_email"
+  git_signing_key: "git_signing_key"

@@ -13,7 +13,13 @@ pipx ensurepath
 alias dotdrop='\dotdrop --cfg=$HOME/dotfiles/config.yaml'
 ```
 
-## Deploy customd dotfiles
+## Deploy custom dotfiles
 ```sh
 dotdrop install -aD -p home
+```
+
+## Importing new files
+```sh
+# Example:
+dotdrop import -l absolute -p home ~/.gitconfig
 ```
