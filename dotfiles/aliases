@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
-
 # System
 alias sudo='sudo '
 alias sdn='sudo shutdown -h now'
@@ -47,7 +46,7 @@ alias duf='docker-compose up --force-recreate'
 alias dufd='docker-compose up --force-recreate -d'
 
 ## Dotdrop
-alias dotdrop='DOTDROP_AUTOUPDATE=no $HOME/dotfiles/dotdrop.sh --cfg=$HOME/dotfiles/config.yaml'
+alias dotdrop='\dotdrop --cfg=$HOME/dotfiles/config.yaml'
 
 ## Colorize grep
 alias grep='grep --color=auto'

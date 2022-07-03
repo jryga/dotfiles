@@ -11,43 +11,44 @@ config:
   backup: true
   create: true
   dotpath: dotfiles
+  minversion: 1.10.3
 dotfiles:
   f_vimrc:
     src: vimrc
     dst: ~/.vimrc
-    link: link
+    link: absolute
     actions:
     - vundle-install
     - vundle
   f_tmux.conf:
     src: tmux.conf
     dst: ~/.tmux.conf
-    link: link
+    link: absolute
     actions:
     - tpm-install
     - tmux-plugins
   f_zshrc:
     src: zshrc
     dst: ~/.zshrc
-    link: link
+    link: absolute
     actions:
     - zinit-install
   f_aliases:
     src: aliases
     dst: ~/.aliases
-    link: link
+    link: absolute
   f_condarc:
     src: condarc
     dst: ~/.condarc
-    link: link
+    link: absolute
   f_p10k.zsh:
     src: p10k.zsh
     dst: ~/.p10k.zsh
-    link: link
+    link: absolute
   f_zprofile:
     src: zprofile
     dst: ~/.zprofile
-    link: link
+    link: absolute
 profiles:
   home:
     dotfiles:
