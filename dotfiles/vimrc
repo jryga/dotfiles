@@ -3,7 +3,7 @@ set nocompatible
 syntax on
 filetype off                  " required
 
-colorscheme ron
+" colorscheme spacecamp
 
 
 " set the runtime path to include Vundle and initialize
@@ -21,6 +21,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
+" Plugin 'jaredgorski/spacecamp'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
