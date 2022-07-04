@@ -170,3 +170,11 @@ if expand('%:h') =~ '\~/.ansible/tmp'
     " Disable copying to the system clipboard.
     set clipboard=
 endif
+
+" Custom Python functions
+function! PythonMain()
+    -1r~/.vim/templates/python/main.py
+    normal! 6gg
+endfunction
+
+:command! PythonMain :call PythonMain()

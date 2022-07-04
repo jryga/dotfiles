@@ -56,6 +56,10 @@ dotfiles:
     dst: ~/.gitconfig
     link: absolute
     template: true
+  d_templates:
+    src: vim/templates
+    dst: ~/.vim/templates
+    link: absolute
 profiles:
   home:
     dotfiles:
@@ -67,7 +71,8 @@ profiles:
     - f_p10k.zsh
     - f_zprofile
     - f_gitconfig
+    - d_templates
 uservariables:
-  git_name: "git_name"
-  git_email: "git_email"
-  git_signing_key: "git_signing_key"
+  git_name: git_name
+  git_email: git_email
+  git_signing_key: git_signing_key
