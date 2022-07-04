@@ -46,7 +46,7 @@ alias duf='docker-compose up --force-recreate'
 alias dufd='docker-compose up --force-recreate -d'
 
 ## Dotdrop
-alias dotdrop='\dotdrop --cfg=$HOME/dotfiles/config.yaml'
+alias dotdrop='dotdrop --cfg=$HOME/dotfiles/config.yaml'
 
 ## Colorize grep
 alias grep='grep --color=auto'
@@ -59,6 +59,7 @@ alias rm='rm -vi'
 alias ls='ls -G'
 alias lo='ls -Ghl'
 alias ll='ls -Ghal'
+alias tmux='tmux -u'
 fi
 
 # Linux-GNU
