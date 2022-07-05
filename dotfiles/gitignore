@@ -3,6 +3,9 @@
 .AppleDouble
 .LSOverride
 
+# ctags
+.ctags
+
 # Python
 .venv/
 
