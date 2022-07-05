@@ -18,6 +18,9 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
 
+# Install zmv
+autoload zmv
+
 # Load Colors
 autoload -U colors && colors
 
@@ -103,7 +106,7 @@ zinit light romkatv/powerlevel10k
 
 # Turbo load plugins
 zinit wait lucid for \
-    OMZP::git \
+    agkozak/zsh-z \
     OMZP::fzf \
     OMZP::cp \
     OMZP::pip \

@@ -1,2 +1,5 @@
-.venv/
+# Variable used to generate templates
 uservariables*.yaml
+
+# Directory where templates/backups are stored
+.templates/

@@ -1,19 +1,20 @@
 [user]
-	name = {{@@ git_name @@}}
-	email = {{@@ git_email @@}}
-	signingkey = {{@@ git_signing_key @@}}
+    name = {{@@ git_name @@}}
+    email = {{@@ git_email @@}}
+    signingkey = {{@@ git_signing_key @@}}
 
 [commit]
-	gpgsign = true
+    gpgsign = true
 
 [pull]
-	rebase = false
+    rebase = false
 
 [init]
-	defaultBranch = master
+    defaultBranch = master
 
 [core]
     pager = delta
+    excludesfile = ~/.gitignore
 
 [interactive]
     diffFilter = delta --color-only
@@ -32,23 +33,38 @@
 
 [alias]
 
-	# View abbreviated SHA, description, and history graph of the latest 20 commits
-	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+    # View the current working tree status using the short format
+    s = status -s
 
-	# View the current working tree status using the short format
-	s = status -s
+    # `git di $number` shows the diff between the state `$number` revisions ago and the current state
+    di = !"d() { git diff --patch-with-stat HEAD~${1:-0}; }; git diff-index --quiet HEAD -- || clear; d"
 
-	# `git di $number` shows the diff between the state `$number` revisions ago and the current state
-	di = !"d() { git diff --patch-with-stat HEAD~${1:-0}; }; git diff-index --quiet HEAD -- || clear; d"
+    # View abbreviated SHA, description, and history graph of the latest 20 commits
+    l = log --pretty=oneline -n 20 --graph --abbrev-commit
 
-	# Show the most recent commit
-	lc = log -1 HEAD --stat --show-signature
+    # List commit in fancy way
+    ll = log --graph --pretty=format:'commit: %C(bold red)%h%Creset %C(red)<%H>%Creset %C(bold magenta)%d %Creset%ndate: %C(bold yellow)%cd %Creset%C(yellow)%cr%Creset%nauthor: %C(bold blue)%an%Creset %C(blue)<%ae>%Creset%n%C(cyan)%s%n%Creset'
 
-	# Switch to a branch, creating it if necessary
-	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+    # Show the most recent commit
+    lc = log -1 HEAD --stat --show-signature
 
-	# Interactive rebase
-	rb = rebase -if
+    # Show signatures in a graph
+    ls = log --show-signature --graph
+
+    # Switch to a branch, creating it if necessary
+    go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+
+    # Create new branch based off of default from origin
+    nb = "!f() { git fetch && git checkout --no-track -b $1 \"$(git remote show origin | grep 'HEAD branch' | sed 's@.*: @origin/@')\"; }; f"
+
+    # Interactive rebase
+    rb = rebase -if
 
     # Resign commits
     resign = rebase --exec 'git commit --amend --no-edit -n -S' -i
+
+    # Force push, typically after rebase
+    fp = push --force-with-lease
+
+    # List all aliases in alpha order
+    la = "!f() { git config --global -l | grep alias | sort; }; f"

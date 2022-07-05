@@ -8,7 +8,7 @@ alias vv='vim ~/.vimrc'
 alias aa='vim ~/.aliases'
 alias tt='vim ~/.tmux.conf'
 alias zz="vim ~/.zshrc"
-alias rr="source ~/.zshrc"
+alias rr="source ~/.zprofile"
 alias pg='ps -ef | grep'
 alias svim='sudo -E vim'
 alias mine='chown $USER:$USER'
@@ -47,6 +47,8 @@ alias dufd='docker-compose up --force-recreate -d'
 
 ## Dotdrop
 alias dotdrop='dotdrop --cfg=$HOME/dotfiles/config.yaml'
+alias ddinstall='dotdrop install -aD -p home'
+alias ddupdate='dotdrop install -D -p home'
 
 ## Colorize grep
 alias grep='grep --color=auto'
