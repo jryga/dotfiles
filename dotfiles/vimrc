@@ -35,6 +35,7 @@ Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'dense-analysis/ale'
 Plugin 'davidhalter/jedi'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'simnalamburt/vim-mundo'
 
 " Coding
 Plugin 'vim-syntastic/syntastic'
@@ -189,6 +190,12 @@ call tinykeymap#Map('winsize', '+', 'wincmd +')
 call tinykeymap#Map('winsize', '-', 'wincmd -')
 call tinykeymap#Map('winsize', '<', 'wincmd <')
 call tinykeymap#Map('winsize', '>', 'wincmd >')
+
+" ### vim-mundo
+" Enable persistent undo so that undo history persists across vim sessions
+ set undofile
+ set undodir=~/.vim/undo
+nmap <F5> :MundoToggle<CR>
 
 " Ansible Vault: securing your editor
 if expand('%:h') =~ '\~/.ansible/tmp'
