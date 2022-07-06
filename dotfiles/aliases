@@ -46,9 +46,13 @@ alias duf='docker-compose up --force-recreate'
 alias dufd='docker-compose up --force-recreate -d'
 
 ## Dotdrop
-alias dotdrop='dotdrop --cfg=$HOME/dotfiles/config.yaml'
+alias dotdrop='dotdrop --cfg="$DOTDROP_YAML"'
 alias ddinstall='dotdrop install -aD -p home'
 alias ddupdate='dotdrop install -D -p home'
+
+ddauto () {
+    (cd "$(dirname "$DOTDROP_YAML")" && git pull && ddupdate)
+}
 
 ## Colorize grep
 alias grep='grep --color=auto'
