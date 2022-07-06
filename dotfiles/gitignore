@@ -6,8 +6,11 @@
 # ctags
 .ctags
 
-# Python
+# Python venv
 .venv/
+
+# pyenv
+.python-version
 
 # PyCharm
 .idea/

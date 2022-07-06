@@ -1,11 +1,5 @@
 #!/usr/bin/env zsh
 
-# Required for GPG, might be MacOS issue
-export GPG_TTY=$(tty)
-
-# Path to where I store my dotfiles config
-export DOTDROP_YAML=$HOME/dotfiles/config.yaml
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.

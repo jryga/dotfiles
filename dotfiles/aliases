@@ -25,6 +25,30 @@ ggg () {
     g++ --std=c++14 -Wall -O2 $@ && pbpaste | ./a.out
 }
 
+# python
+pushv () {
+    # Make and activate venv for cwd
+    DEFAULT=$(python3 --version | cut -d ' ' -f 2)
+    VERSION=${1:-$DEFAULT}
+    BASE=$(basename "$(pwd)")
+    NAME="${BASE}-${VERSION}"
+    pyenv install -s "$VERSION" && {
+        pyenv virtualenv "$VERSION" "$NAME" 2>/dev/null
+        pyenv local "$NAME"
+        pyenv activate
+    }
+}
+
+popv () {
+    # Remove venv for cwd
+    DEFAULT=$(python3 --version | cut -d ' ' -f 2)
+    VERSION=${1:-$DEFAULT}
+    BASE=$(basename "$(pwd)")
+    NAME="${BASE}-${VERSION}"
+    pyenv virtualenv-delete "$NAME"
+    rm .python-version
+}
+
 # tmux
 alias bye='tmux detach'
 alias tst='if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then; tmux new-session -A -s main; else; echo "Already using TMUX"; (exit 1); fi'
