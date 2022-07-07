@@ -1,10 +1,11 @@
 #!/usr/bin/env sh
 # System
+alias vim='nvim'
 alias sudo='sudo '
 alias sdn='sudo shutdown -h now'
 alias srn='sudo reboot'
 alias hg='history 0 | grep --color=auto'
-alias vv='vim ~/.vimrc'
+alias vv='vim ~/.config/nvim/init.vim'
 alias aa='vim ~/.aliases'
 alias tt='vim ~/.tmux.conf'
 alias zz="vim ~/.zshrc"

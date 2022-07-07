@@ -18,7 +18,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
-Plugin 'ayu-theme/ayu-vim'
+Plugin 'Luxed/ayu-vim'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
@@ -41,7 +41,7 @@ Plugin 'simnalamburt/vim-mundo'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'preservim/tagbar'
-Plugin 'ycm-core/YouCompleteMe'
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Go
 Plugin 'fatih/vim-go'
@@ -81,11 +81,12 @@ filetype plugin indent on    " required
 " Set color scheme
 if exists('+termguicolors')
     " enable true colors support
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    "let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    "let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
 endif
-let ayucolor="dark"   " for dark version of theme
+set background=dark    " for either mirage or dark version.
+let g:ayucolor="dark"  " for dark version of theme
 colorscheme ayu
 
 

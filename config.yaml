@@ -5,7 +5,7 @@ actions:
     tpm-install: test -e ~/.tmux/plugins/tpm/.git || (mkdir -p ~/.tmux/plugins; git
       clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm)
   zinit-install: sh -c "$(curl -fsSL https://git.io/zinit-install)"
-  vundle: vim +VundleClean! +VundleInstall +VundleInstall! +qall
+  vundle: nvim +VundleClean! +VundleInstall +VundleInstall! +qall
   tmux-plugins: ~/.tmux/plugins/tpm/bindings/install_plugins
 config:
   workdir: .templates
@@ -16,13 +16,6 @@ config:
   import_variables:
   - uservariables.yaml
 dotfiles:
-  f_vimrc:
-    src: vimrc
-    dst: ~/.vimrc
-    link: absolute
-    actions:
-    - vundle-install
-    - vundle
   f_tmux.conf:
     src: tmux.conf
     dst: ~/.tmux.conf
@@ -65,10 +58,16 @@ dotfiles:
     src: gitignore
     dst: ~/.gitignore
     link: absolute
+  f_init.vim:
+    src: config/nvim/init.vim
+    dst: ~/.config/nvim/init.vim
+    link: absolute
+    actions:
+    - vundle-install
+    - vundle
 profiles:
   home:
     dotfiles:
-    - f_vimrc
     - f_tmux.conf
     - f_zshrc
     - f_aliases
@@ -78,6 +77,7 @@ profiles:
     - f_gitconfig
     - d_templates
     - f_gitignore
+    - f_init.vim
 uservariables:
   git_name: git_name
   git_email: git_email
