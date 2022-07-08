@@ -68,3 +68,12 @@
 
     # List all aliases in alpha order
     la = "!f() { git config --global -l | grep alias | sort; }; f"
+
+    # Add all
+    a = add --all
+
+    # Add all as patch
+    pa = add --all -p
+
+    # Rollback the current commit
+    undo = reset --soft HEAD~1

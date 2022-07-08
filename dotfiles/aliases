@@ -18,6 +18,9 @@ alias nkey='ssh-keygen -t ed25519 -a 200 -C "${USER}@${HOST}"'
 alias opt='sudo watch -n 1 iptables -vnL'
 alias optt='sudo watch -n 1 ip6tables -vnL'
 
+# Check GPG works
+alias gg='echo "test" | gpg --clearsign'
+
 pycharm () {
     /opt/pycharm-community/bin/pycharm.sh > /dev/null 2>&1 $@ &
 }

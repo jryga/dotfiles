@@ -65,6 +65,10 @@ dotfiles:
     actions:
     - vundle-install
     - vundle
+  d_themes:
+    src: config/kitty/themes
+    dst: ~/.config/kitty/themes
+    link: absolute
 profiles:
   home:
     dotfiles:
@@ -78,6 +82,7 @@ profiles:
     - d_templates
     - f_gitignore
     - f_init.vim
+    - d_themes
 uservariables:
   git_name: git_name
   git_email: git_email
