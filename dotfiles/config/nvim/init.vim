@@ -18,7 +18,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
-Plugin 'Luxed/ayu-vim'
+Plugin 'atelierbram/vim-colors_atelier-schemes'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
@@ -79,16 +79,8 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " Set color scheme
-if exists('+termguicolors')
-    " enable true colors support
-    "let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    "let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    set termguicolors
-endif
-set background=dark    " for either mirage or dark version.
-let g:ayucolor="dark"  " for dark version of theme
-colorscheme ayu
-
+set background=dark
+colorscheme Atelier_SeasideDark
 
 " Remap leader
 let mapleader = ","
