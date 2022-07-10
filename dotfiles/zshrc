@@ -9,13 +9,6 @@ fi
 
 # Z-Style
 
-# History search using already entered
-autoload -U history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
-
 # Install zmv
 autoload zmv
 
@@ -88,11 +81,9 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 
 # Basic setup
-#zinit light zdharma-continuum/history-search-multi-word
 #zinit light zsh-users/zsh-syntax-highlighting
 zinit wait lucid light-mode for \
-  atinit"zicompinit; zicdreplay" \
-      zdharma-continuum/fast-syntax-highlighting \
+  atinit"zicompinit; zicdreplay" \ zdharma-continuum/fast-syntax-highlighting \
   atload"_zsh_autosuggest_start" \
       zsh-users/zsh-autosuggestions \
   blockf atpull'zinit creinstall -q .' \
@@ -104,10 +95,14 @@ zinit light romkatv/powerlevel10k
 
 # Turbo load plugins
 zinit wait lucid for \
+    zsh-users/zsh-history-substring-search \
+    atload"
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+    " \
     agkozak/zsh-z \
     OMZP::fzf \
     OMZP::cp \
-    OMZP::pip \
     OMZP::extract \
     OMZP::jsontools \
     OMZP::colored-man-pages
@@ -122,7 +117,7 @@ zinit wait lucid for \
 # Accept suggestion Ctrl+Space
 #bindkey '^ ' autosuggest-accept
 
-#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [[ ! "$TERM" = linux ]] && [ -z "$TMUX" ]; then
-#  exec tmux new-session -A -s main
-#fi
+if command -v tmux &> /dev/null && [ -z "$TMUX" ] && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]]; then
+  exec tmux new-session -A -s main
+fi
 ### End of Zinit's installer chunk
