@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+
 # System
 alias vim='nvim'
 alias sudo='sudo '
