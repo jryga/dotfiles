@@ -81,14 +81,15 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 
 # Basic setup
-#zinit light zsh-users/zsh-syntax-highlighting
-zinit wait lucid light-mode for \
-  atinit"zicompinit; zicdreplay" \ zdharma-continuum/fast-syntax-highlighting \
-  atload"_zsh_autosuggest_start" \
-      zsh-users/zsh-autosuggestions \
-  blockf atpull'zinit creinstall -q .' \
-      zsh-users/zsh-completions
+zinit wait lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
+ blockf \
+    zsh-users/zsh-completions \
+ atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
 
+#
 # Set prompt and theme
 zinit ice svn depth'1'
 zinit light romkatv/powerlevel10k
@@ -120,4 +121,5 @@ bindkey '^[[B' history-substring-search-down
 if command -v tmux &> /dev/null && [ -z "$TMUX" ] && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]]; then
   exec tmux new-session -A -s main
 fi
+### End of Zinit's installer chunk
 ### End of Zinit's installer chunk

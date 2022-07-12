@@ -6,6 +6,7 @@ actions:
       clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm)
   zinit-install: sh -c "$(curl -fsSL https://git.io/zinit-install)"
   vundle: nvim +VundleClean! +VundleInstall +VundleInstall! +qall
+  vim-coc: (cd ~/.vim/bundle/coc.nvim && git checkout release)
   tmux-plugins: ~/.tmux/plugins/tpm/bin/install_plugins; ~/.tmux/plugins/tpm/bin/update_plugins
     all; ~/.tmux/plugins/tpm/bin/clean_plugins
 config:
@@ -18,45 +19,41 @@ config:
   - uservariables.yaml
 dotfiles:
   f_tmux.conf:
-    src: tmux.conf
+    src: tmux/tmux.conf
     dst: ~/.tmux.conf
     link: absolute
     actions:
     - tpm-install
     - tmux-plugins
   f_zshrc:
-    src: zshrc
+    src: zsh/zshrc
     dst: ~/.zshrc
     link: absolute
     actions:
     - zinit-install
   f_aliases:
-    src: aliases
+    src: common/aliases
     dst: ~/.aliases
     link: absolute
-  f_condarc:
-    src: condarc
-    dst: ~/.condarc
-    link: absolute
   f_p10k.zsh:
-    src: p10k.zsh
+    src: zsh/p10k.zsh
     dst: ~/.p10k.zsh
     link: absolute
   f_zprofile:
-    src: zprofile
+    src: zsh/zprofile
     dst: ~/.zprofile
     link: absolute
-  f_gitconfig:
-    src: gitconfig
-    dst: ~/.gitconfig
-    link: absolute
-    template: true
   d_templates:
     src: vim/templates
     dst: ~/.vim/templates
     link: absolute
+  f_gitconfig:
+    src: git/gitconfig.ini
+    dst: ~/.gitconfig
+    link: absolute
+    template: true
   f_gitignore:
-    src: gitignore
+    src: git/gitignore
     dst: ~/.gitignore
     link: absolute
   f_init.vim:
@@ -66,6 +63,7 @@ dotfiles:
     actions:
     - vundle-install
     - vundle
+    - vim-coc
   f_alacritty.yml:
     src: config/alacritty/alacritty.yml
     dst: ~/.config/alacritty/alacritty.yml
@@ -76,7 +74,6 @@ profiles:
     - f_tmux.conf
     - f_zshrc
     - f_aliases
-    - f_condarc
     - f_p10k.zsh
     - f_zprofile
     - f_gitconfig

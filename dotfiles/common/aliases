@@ -1,7 +1,9 @@
 #!/usr/bin/env sh
 
 # System
+alias g='git'
 alias vim='nvim'
+alias v='vim'
 alias sudo='sudo '
 alias sdn='sudo shutdown -h now'
 alias srn='sudo reboot'
@@ -10,6 +12,7 @@ alias vv='vim ~/.config/nvim/init.vim'
 alias aa='vim ~/.aliases'
 alias tt='vim ~/.tmux.conf'
 alias zz="vim ~/.zshrc"
+alias zp="vim ~/.zprofile"
 alias rr="source ~/.zprofile"
 alias pg='ps -ef | grep'
 alias svim='sudo -E vim'
@@ -33,12 +36,13 @@ ggg () {
 # python
 pushv () {
     # Make and activate venv for cwd
+    set -x
     DEFAULT=$(python3 --version | cut -d ' ' -f 2)
     VERSION=${1:-$DEFAULT}
     BASE=$(basename "$(pwd)")
     NAME="${BASE}-${VERSION}"
     pyenv install -s "$VERSION" && {
-        pyenv virtualenv "$VERSION" "$NAME" 2>/dev/null
+        echo n | pyenv virtualenv "$VERSION" "$NAME" 2>/dev/null
         pyenv local "$NAME"
         pyenv activate
     }
@@ -46,6 +50,7 @@ pushv () {
 
 popv () {
     # Remove venv for cwd
+    set -x
     DEFAULT=$(python3 --version | cut -d ' ' -f 2)
     VERSION=${1:-$DEFAULT}
     BASE=$(basename "$(pwd)")
