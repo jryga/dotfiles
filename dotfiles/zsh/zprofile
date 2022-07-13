@@ -32,8 +32,8 @@ fi
 
 
 # EDITOR and VISUAL must go after sourcing
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 
 # Setup pyenv
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
