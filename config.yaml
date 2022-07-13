@@ -1,13 +1,16 @@
 actions:
   pre:
-    vundle-install: test -e ~/.vim/bundle/Vundle.vim || (mkdir -p ~/.vim/bundle; git
+    vundle-install:
+      test -e ~/.vim/bundle/Vundle.vim || (mkdir -p ~/.vim/bundle; git
       clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim)
-    tpm-install: test -e ~/.tmux/plugins/tpm/.git || (mkdir -p ~/.tmux/plugins; git
+    tpm-install:
+      test -e ~/.tmux/plugins/tpm/.git || (mkdir -p ~/.tmux/plugins; git
       clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm)
   zinit-install: sh -c "$(curl -fsSL https://git.io/zinit-install)"
   vundle: nvim +VundleClean! +VundleInstall +VundleInstall! +qall
   vim-coc: (cd ~/.vim/bundle/coc.nvim && git checkout release)
-  tmux-plugins: ~/.tmux/plugins/tpm/bin/install_plugins; ~/.tmux/plugins/tpm/bin/update_plugins
+  tmux-plugins:
+    ~/.tmux/plugins/tpm/bin/install_plugins; ~/.tmux/plugins/tpm/bin/update_plugins
     all; ~/.tmux/plugins/tpm/bin/clean_plugins
 config:
   workdir: .templates
@@ -16,21 +19,21 @@ config:
   dotpath: dotfiles
   minversion: 1.10.3
   import_variables:
-  - uservariables.yaml
+    - uservariables.yaml
 dotfiles:
   f_tmux.conf:
     src: tmux/tmux.conf
     dst: ~/.tmux.conf
     link: absolute
     actions:
-    - tpm-install
-    - tmux-plugins
+      - tpm-install
+      - tmux-plugins
   f_zshrc:
     src: zsh/zshrc
     dst: ~/.zshrc
     link: absolute
     actions:
-    - zinit-install
+      - zinit-install
   f_aliases:
     src: common/aliases
     dst: ~/.aliases
@@ -61,9 +64,9 @@ dotfiles:
     dst: ~/.config/nvim/init.vim
     link: absolute
     actions:
-    - vundle-install
-    - vundle
-    - vim-coc
+      - vundle-install
+      - vundle
+      - vim-coc
   f_alacritty.yml:
     src: config/alacritty/alacritty.yml
     dst: ~/.config/alacritty/alacritty.yml
@@ -71,16 +74,16 @@ dotfiles:
 profiles:
   home:
     dotfiles:
-    - f_tmux.conf
-    - f_zshrc
-    - f_aliases
-    - f_p10k.zsh
-    - f_zprofile
-    - f_gitconfig
-    - d_templates
-    - f_gitignore
-    - f_init.vim
-    - f_alacritty.yml
+      - f_tmux.conf
+      - f_zshrc
+      - f_aliases
+      - f_p10k.zsh
+      - f_zprofile
+      - f_gitconfig
+      - d_templates
+      - f_gitignore
+      - f_init.vim
+      - f_alacritty.yml
 uservariables:
   git_name: git_name
   git_email: git_email
