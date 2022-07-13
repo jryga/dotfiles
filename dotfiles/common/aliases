@@ -4,6 +4,9 @@
 alias g='git'
 alias vim='nvim'
 alias v='vim'
+alias m='make'
+alias h='htop'
+alias s='sudo '
 alias sudo='sudo '
 alias sdn='sudo shutdown -h now'
 alias srn='sudo reboot'
@@ -71,7 +74,6 @@ alias mkd='mkdir -pv'
 ## SSH
 alias kcore_bk='ssh -p 2883 josh@45.77.144.138'
 alias kcore='ssh -p 2883 josh@10.19.1.1'
-alias pi='ssh -p 6969 josh@127.0.0.1'
 alias dkp='ssh josh@192.168.1.2'
 alias mountpi='sudo ext4fuse /dev/disk2s2 /Volumes/rpi -o allow_other'
 

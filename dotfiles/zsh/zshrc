@@ -72,35 +72,20 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zdharma-continuum/zinit-annex-as-monitor \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust
+
+# Set prompt and theme
+zinit load romkatv/powerlevel10k
 
 # Basic setup
 zinit wait lucid for \
- atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+  atinit"zicompinit; zicdreplay" \
     zdharma-continuum/fast-syntax-highlighting \
- blockf \
+  atload"_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions \
+  blockf atpull'zinit creinstall -q .' \
     zsh-users/zsh-completions \
- atload"!_zsh_autosuggest_start" \
-    zsh-users/zsh-autosuggestions
-
-#
-# Set prompt and theme
-zinit ice svn depth'1'
-zinit light romkatv/powerlevel10k
-
-# Turbo load plugins
-zinit wait lucid for \
+  atload"bindkey '^[[A' history-substring-search-up; bindkey '^[[B' history-substring-search-down" \
     zsh-users/zsh-history-substring-search \
-    atload"
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-    " \
     agkozak/zsh-z \
     OMZP::fzf \
     OMZP::cp \
@@ -121,5 +106,3 @@ bindkey '^[[B' history-substring-search-down
 if command -v tmux &> /dev/null && [ -z "$TMUX" ] && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]]; then
   exec tmux new-session -A -s main
 fi
-### End of Zinit's installer chunk
-### End of Zinit's installer chunk
