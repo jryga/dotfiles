@@ -261,6 +261,7 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -285,6 +286,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " ### vim-go
+let g:go_code_completion_enabled = 0
+let g:go_gopls_enabled = 0
 let g:go_metalinter_enabled = ['all']
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['all']
