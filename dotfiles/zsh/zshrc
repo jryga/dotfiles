@@ -76,6 +76,8 @@ autoload -Uz _zinit
 # Set prompt and theme
 zinit load romkatv/powerlevel10k
 
+zinit load agkozak/zsh-z
+
 # Basic setup
 zinit wait lucid for \
   atinit"zicompinit; zicdreplay" \
@@ -86,7 +88,6 @@ zinit wait lucid for \
     zsh-users/zsh-completions \
   atload"bindkey '^[[A' history-substring-search-up; bindkey '^[[B' history-substring-search-down" \
     zsh-users/zsh-history-substring-search \
-    agkozak/zsh-z \
     OMZP::fzf \
     OMZP::cp \
     OMZP::extract \

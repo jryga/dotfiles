@@ -2,8 +2,8 @@
 
 # System
 alias g='git'
-alias vim='nvim'
-alias v='vim'
+alias vim='lvim'
+alias v='lvim'
 alias m='make'
 alias h='htop'
 alias s='sudo '
@@ -11,7 +11,7 @@ alias sudo='sudo '
 alias sdn='sudo shutdown -h now'
 alias srn='sudo reboot'
 alias hg='history 0 | grep --color=auto'
-alias vv='vim ~/.config/nvim/init.vim'
+alias vv='lvim ~/.config/lvim/config.lua'
 alias aa='vim ~/.aliases'
 alias tt='vim ~/.tmux.conf'
 alias zz="vim ~/.zshrc"
@@ -24,6 +24,9 @@ alias mkroot='chown root:root'
 alias nkey='ssh-keygen -t ed25519 -a 200 -C "${USER}@${HOST}"'
 alias opt='sudo watch -n 1 iptables -vnL'
 alias optt='sudo watch -n 1 ip6tables -vnL'
+
+# Dump lvim settings to a file
+alias lvdump="lvim --headless +'lua require(\"lvim.utils\").generate_settings()' +qa && sort -o lv-settings.lua{,} && { less lv-settings.lua; \rm lv-settings.lua }"
 
 # Check GPG works
 alias gg='echo "test" | gpg --clearsign'
