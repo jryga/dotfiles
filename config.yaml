@@ -1,14 +1,9 @@
 actions:
   pre:
-    vundle-install:
-      test -e ~/.vim/bundle/Vundle.vim || (mkdir -p ~/.vim/bundle &&;
-      git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim)
     tpm-install:
       test -e ~/.tmux/plugins/tpm/.git || (mkdir -p ~/.tmux/plugins &&;
       git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm)
   zinit-install: sh -c "$(curl -fsSL https://git.io/zinit-install)"
-  vundle: nvim +VundleClean! +VundleInstall +VundleInstall! +qall
-  vim-coc: (cd ~/.vim/bundle/coc.nvim && git checkout release)
   tmux-plugins:
     ~/.tmux/plugins/tpm/bin/install_plugins && ~/.tmux/plugins/tpm/bin/update_plugins
     all &&; ~/.tmux/plugins/tpm/bin/clean_plugins
@@ -59,21 +54,9 @@ dotfiles:
     src: git/gitignore
     dst: ~/.gitignore
     link: absolute
-  f_init.vim:
-    src: config/nvim/init.vim
-    dst: ~/.config/nvim/init.vim
-    link: absolute
-    actions:
-      - vundle-install
-      - vundle
-      - vim-coc
   f_alacritty.yml:
     src: config/alacritty/alacritty.yml
     dst: ~/.config/alacritty/alacritty.yml
-    link: absolute
-  f_coc-settings.json:
-    src: config/nvim/coc-settings.json
-    dst: ~/.config/nvim/coc-settings.json
     link: absolute
   f_config.lua:
     src: config/lvim/config.lua
@@ -90,9 +73,7 @@ profiles:
       - f_gitconfig
       - d_templates
       - f_gitignore
-      - f_init.vim
       - f_alacritty.yml
-      - f_coc-settings.json
       - f_config.lua
 uservariables:
   git_name: git_name
