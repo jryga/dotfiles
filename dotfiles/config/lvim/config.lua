@@ -20,6 +20,12 @@ lvim.colorscheme = "Atelier_SeasideDark"
 lvim.leader = ","
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+
+-- Remove these defaults for exiting insert mode
+pcall(vim.keymap.del, "i", "jk")
+pcall(vim.keymap.del, "i", "kj")
+pcall(vim.keymap.del, "i", "jj")
+
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
@@ -182,6 +188,38 @@ lvim.plugins = {
     "tpope/vim-unimpaired",
     commit = "efdc6475f7ea789346716dabf9900ac04ee8604a",
   },
+  {
+    "tpope/vim-surround",
+    commit = "bf3480dc9ae7bea34c78fbba4c65b4548b5b1fea",
+  },
+  {
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    commit = "22ef87c6b2039aac069bfba1c5be5cd26c27b752",
+    config = function()
+      require("lsp_lines").setup()
+    end,
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    commit = "6177a59552e35dfb69e1493fd68194e673dc3ee2",
+    config = function()
+      require("indent_blankline").setup {
+        show_current_context = true,
+        show_current_context_start = true,
+        char_highlight_list = {
+          "IndentBlanklineIndent1",
+          "IndentBlanklineIndent2",
+        },
+        space_char_highlight_list = {
+          "IndentBlanklineIndent1",
+          "IndentBlanklineIndent2",
+        },
+        show_first_indent_level = false,
+        show_trailing_blankline_indent = false,
+      }
+    end,
+  },
+  { "qualiabyte/vim-colorstepper" },
 }
 
 -- Setup autoformatters
@@ -192,7 +230,7 @@ formatters.setup {
   {
     command = "prettier",
     extra_args = { "--print-with", "100" },
-    filetypes = { "typescript", "typescriptreact", "javascript", "html", "css" },
+    filetypes = { "typescript", "typescriptreact", "javascript", "html", "css", "yaml" },
   },
 }
 
@@ -215,3 +253,20 @@ end
 -- nvim-tree
 lvim.builtin.nvimtree.setup.view.auto_resize = true
 lvim.builtin.nvimtree.setup.actions.open_file.resize_window = true
+
+-- lsp_lines
+lvim.lsp.diagnostics.virtual_text = true
+vim.diagnostic.config({
+  virtual_lines = false,
+})
+
+
+-- indent_blankline
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
+  callback = function()
+    vim.cmd [[highlight IndentBlanklineContextChar gui=nocombine guifg=#0CDEF4]]
+    vim.cmd [[highlight IndentBlanklineIndent1 gui=nocombine guifg=#444444]]
+    vim.cmd [[highlight IndentBlanklineIndent2 gui=nocombine guifg=#676767]]
+  end,
+})
