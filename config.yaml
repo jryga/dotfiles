@@ -58,6 +58,10 @@ dotfiles:
     src: config/lvim/config.lua
     dst: ~/.config/lvim/config.lua
     link: absolute
+  f_ansible.cfg:
+    src: ansible.cfg
+    dst: ~/.ansible.cfg
+    link: absolute
 profiles:
   home:
     dotfiles:
@@ -71,6 +75,7 @@ profiles:
       - f_gitignore
       - f_alacritty.yml
       - f_config.lua
+      - f_ansible.cfg
 uservariables:
   git_name: git_name
   git_email: git_email
