@@ -11,7 +11,7 @@ colors:
     text: "#090300"
     cursor: "#a5a2a2"
   normal:
-    black: "#090300"
+    black: "#3b3b3b"
     red: "#db2d20"
     green: "#14db49"
     yellow: "#F9AF4F"
@@ -118,3 +118,5 @@ key_bindings:
   # Alt + \
   - { key: Backslash, mods: Alt|Shift, chars: "\e|" }
   # Alt + |
+  - { key: Equals, mods: Control, action: IncreaseFontSize }
+  - { key: Minus, mods: Control, action: DecreaseFontSize }

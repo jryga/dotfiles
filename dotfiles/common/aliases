@@ -2,6 +2,7 @@
 
 # System
 alias g='git'
+alias k='kubectl'
 alias vim='lvim'
 alias v='lvim'
 alias m='make'
@@ -85,7 +86,7 @@ alias duf='docker-compose up --force-recreate'
 alias dufd='docker-compose up --force-recreate -d'
 
 ## Dotdrop
-alias dotdrop='dotdrop --cfg="$DOTDROP_YAML"'
+alias dotdrop='\dotdrop --cfg="$DOTDROP_YAML"'
 alias ddinstall='dotdrop install -aD -p home'
 alias ddupdate='dotdrop install -D -p home'
 
