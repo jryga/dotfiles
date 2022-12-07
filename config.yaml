@@ -1,12 +1,15 @@
 actions:
   pre:
-    tpm-install:
+    tpm-install: >
       test -e ~/.tmux/plugins/tpm/.git || (mkdir -p ~/.tmux/plugins &&
       git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm)
   zinit-install: sh -c "$(curl -fsSL https://git.io/zinit-install)"
-  tmux-plugins:
-    ~/.tmux/plugins/tpm/bin/install_plugins && ~/.tmux/plugins/tpm/bin/update_plugins
-    all && ~/.tmux/plugins/tpm/bin/clean_plugins
+  tmux-plugins: >
+    tmux new-session
+    '(~/.tmux/plugins/tpm/bin/install_plugins
+    && ~/.tmux/plugins/tpm/bin/update_plugins all
+    && ~/.tmux/plugins/tpm/bin/clean_plugins)
+    |& tee /tmp/tmux_update.txt'; cat /tmp/tmux_update.txt
 config:
   workdir: .templates
   backup: true
