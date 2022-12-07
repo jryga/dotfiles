@@ -25,6 +25,10 @@ alias mkroot='chown root:root'
 alias nkey='ssh-keygen -t ed25519 -a 200 -C "${USER}@${HOST}"'
 alias opt='sudo watch -n 1 iptables -vnL'
 alias optt='sudo watch -n 1 ip6tables -vnL'
+alias ls='exa'
+alias ll='exa -l'
+alias la='exa -laa'
+alias lt='exa -laT'
 
 # Dump lvim settings to a file
 alias lvdump="lvim --headless +'lua require(\"lvim.utils\").generate_settings()' +qa && sort -o lv-settings.lua{,} && { less lv-settings.lua; \rm lv-settings.lua }"
@@ -102,9 +106,6 @@ alias fgrep='fgrep --color=auto'
 # MacOS
 if [[ $OSTYPE == darwin* ]]; then
 alias rm='rm -vi'
-alias ls='ls -G'
-alias ll='ls -Ghl'
-alias la='ls -Ghal'
 alias tmux='tmux -u'
 fi
 
@@ -112,9 +113,6 @@ fi
 if [[ $OSTYPE == linux-gnu ]]; then
 alias work="xfreerdp /multimon /sound /microphone /auto-reconnect -themes /gfx +gfx-progressive -bitmap-cache /v:192.168.1.17:9506 /u:jkraitbe@ford.com"
 alias rm='rm -vI'
-alias ls='ls --color=auto'
-alias ll='ls --color=auto -lh'
-alias la='ls --color=auto -lha'
 
 grub_reboot_to () {
     title=$(sudo grep -i "$1" /boot/grub/grub.cfg | grep -m1 menuentry | cut -d "'" -f 2)
