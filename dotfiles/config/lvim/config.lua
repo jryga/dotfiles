@@ -279,3 +279,12 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     vim.cmd [[highlight IndentBlanklineIndent2 gui=nocombine guifg=#676767]]
   end,
 })
+
+-- highlight trailing whitespaces
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
+  callback = function()
+    vim.cmd [[match ExtraWhitespace /\s\+$/]]
+    vim.cmd [[highlight ExtraWhitespace ctermbg=red guibg=red]]
+  end,
+})
