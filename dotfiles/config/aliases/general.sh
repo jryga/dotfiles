@@ -89,6 +89,11 @@ alias mountpi='sudo ext4fuse /dev/disk2s2 /Volumes/rpi -o allow_other'
 alias duf='docker-compose up --force-recreate'
 alias dufd='docker-compose up --force-recreate -d'
 
+## Colorize grep
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
 ## Dotdrop
 alias dotdrop='\dotdrop --cfg="$DOTDROP_YAML"'
 alias ddinstall='dotdrop install -aD -p home'
@@ -97,37 +102,3 @@ alias ddupdate='dotdrop install -D -p home'
 ddauto () {
     (cd "$(dirname "$DOTDROP_YAML")" && git pull && ddupdate)
 }
-
-## Colorize grep
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-
-# MacOS
-if [[ $OSTYPE == darwin* ]]; then
-alias rm='rm -vi'
-alias tmux='tmux -u'
-fi
-
-# Linux-GNU
-if [[ $OSTYPE == linux-gnu ]]; then
-alias work="xfreerdp /multimon /sound /microphone /auto-reconnect -themes /gfx +gfx-progressive -bitmap-cache /v:192.168.1.17:9506 /u:jkraitbe@ford.com"
-alias rm='rm -vI'
-
-grub_reboot_to () {
-    title=$(sudo grep -i "$1" /boot/grub/grub.cfg | grep -m1 menuentry | cut -d "'" -f 2)
-    if [ -n $title ]; then
-        sudo grub-reboot "$title" && sudo reboot
-    else
-        (exit 1)
-    fi
-}
-
-alias gtw='grub_reboot_to windows'
-alias gtl='grub_reboot_to void'
-fi
-
-# XBPS/Void
-if which xbps-install > /dev/null 2>&1; then
-alias vpm='sudo vpm'
-fi

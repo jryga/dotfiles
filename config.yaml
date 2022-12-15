@@ -32,10 +32,6 @@ dotfiles:
     link: absolute
     actions:
       - zinit-install
-  f_aliases:
-    src: common/aliases
-    dst: ~/.aliases
-    link: absolute
   f_p10k.zsh:
     src: zsh/p10k.zsh
     dst: ~/.p10k.zsh
@@ -69,12 +65,31 @@ dotfiles:
     src: ansible.cfg
     dst: ~/.ansible.cfg
     link: absolute
+  f_alias_main.sh:
+    src: config/aliases/main.sh
+    dst: ~/.config/aliases/main.sh
+    link: absolute
+    chmod: "755"
+  f_alias_general.sh:
+    src: config/aliases/general.sh
+    dst: ~/.config/aliases/general.sh
+    link: absolute
+    chmod: "755"
+  f_alias_mac.sh:
+    src: config/aliases/mac.sh
+    dst: ~/.config/aliases/mac.sh
+    link: absolute
+    chmod: "755"
+  f_alias_wsl.sh:
+    src: config/aliases/wsl.sh
+    dst: ~/.config/aliases/wsl.sh
+    link: absolute
+    chmod: "755"
 profiles:
   home:
     dotfiles:
       - f_tmux.conf
       - f_zshrc
-      - f_aliases
       - f_p10k.zsh
       - f_zprofile
       - f_gitconfig
@@ -83,6 +98,10 @@ profiles:
       - f_alacritty.yml
       - f_config.lua
       - f_ansible.cfg
+      - f_alias_main.sh
+      - f_alias_general.sh
+      - f_alias_mac.sh
+      - f_alias_wsl.sh
 uservariables:
   git_name: git_name
   git_email: git_email

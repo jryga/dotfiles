@@ -32,4 +32,4 @@ eval "$(pyenv virtualenv-init -)"
 eval "$(fnm env --use-on-cd)"
 
 # Source other files
-[ -f ~/.aliases ] && source ~/.aliases
+[ -f "$XDG_CONFIG_HOME/aliases/main.sh" ] && . "$XDG_CONFIG_HOME/aliases/main.sh"
