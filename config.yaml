@@ -23,6 +23,7 @@ dotfiles:
     src: tmux/tmux.conf
     dst: ~/.tmux.conf
     link: absolute
+    chmod: "640"
     actions:
       - tpm-install
       - tmux-plugins
@@ -30,61 +31,70 @@ dotfiles:
     src: zsh/zshrc
     dst: ~/.zshrc
     link: absolute
+    chmod: 740
     actions:
       - zinit-install
   f_p10k.zsh:
     src: zsh/p10k.zsh
     dst: ~/.p10k.zsh
     link: absolute
+    chmod: 740
   f_zprofile:
     src: zsh/zprofile
     dst: ~/.zprofile
     link: absolute
+    chmod: 740
   d_templates:
     src: vim/templates
     dst: ~/.vim/templates
     link: absolute
+    chmod: 750
   f_gitconfig:
     src: git/gitconfig.ini
     dst: ~/.gitconfig
     link: absolute
     template: true
+    chmod: 600
   f_gitignore:
     src: git/gitignore
     dst: ~/.gitignore
     link: absolute
+    chmod: 640
   f_alacritty.yml:
     src: config/alacritty/alacritty.yml
     dst: ~/.config/alacritty/alacritty.yml
     link: absolute
+    chmod: 640
   f_config.lua:
     src: config/lvim/config.lua
     dst: ~/.config/lvim/config.lua
     link: absolute
+    chmod: 740
   f_ansible.cfg:
     src: ansible.cfg
     dst: ~/.ansible.cfg
     link: absolute
+    chmod: 640
   f_alias_main.sh:
     src: config/aliases/main.sh
     dst: ~/.config/aliases/main.sh
     link: absolute
-    chmod: "755"
+    chmod: 740
   f_alias_general.sh:
     src: config/aliases/general.sh
     dst: ~/.config/aliases/general.sh
     link: absolute
-    chmod: "755"
+    chmod: 740
   f_alias_mac.sh:
     src: config/aliases/mac.sh
     dst: ~/.config/aliases/mac.sh
     link: absolute
-    chmod: "755"
+    chmod: 740
   f_alias_wsl.sh:
     src: config/aliases/wsl.sh
     dst: ~/.config/aliases/wsl.sh
     link: absolute
-    chmod: "755"
+    chmod: 740
 profiles:
   home:
     dotfiles:
