@@ -13,7 +13,6 @@ alias sdn='sudo shutdown -h now'
 alias srn='sudo reboot'
 alias hg='history 0 | grep --color=auto'
 alias vv='lvim ~/.config/lvim/config.lua'
-alias aa='vim ~/.aliases'
 alias tt='vim ~/.tmux.conf'
 alias zz="vim ~/.zshrc"
 alias zp="vim ~/.zprofile"
