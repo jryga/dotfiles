@@ -222,6 +222,17 @@ lvim.plugins = {
     end,
   },
   { "qualiabyte/vim-colorstepper" },
+  {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  },
 }
 
 -- Setup autoformatters
@@ -280,3 +291,10 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     vim.cmd [[highlight ExtraWhitespace ctermbg=red guibg=red]]
   end,
 })
+-- trouble keybindings
+lvim.keys.normal_mode["<leader>xx"] = ":TroubleToggle<CR>"
+lvim.keys.normal_mode["<leader>xw"] = ":TroubleToggle workspace_diagnostics<CR>"
+lvim.keys.normal_mode["<leader>xd"] = ":TroubleToggle document_diagnostics<CR>"
+lvim.keys.normal_mode["<leader>xq"] = ":TroubleToggle quickfix<CR>"
+lvim.keys.normal_mode["<leader>xl"] = ":TroubleToggle loclist<CR>"
+lvim.keys.normal_mode["gR"] = ":TroubleToggle lsp_references<CR>"
