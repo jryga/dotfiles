@@ -194,24 +194,16 @@ lvim.builtin.treesitter.highlight.enable = true
 -- Adding snippets (https://www.lunarvim.org/configuration/08-custom-snippets.html#json-version)
 
 lvim.plugins = {
-  {
-    "tpope/vim-unimpaired",
-    commit = "efdc6475f7ea789346716dabf9900ac04ee8604a",
-  },
-  {
-    "tpope/vim-surround",
-    commit = "bf3480dc9ae7bea34c78fbba4c65b4548b5b1fea",
-  },
+  { "tpope/vim-unimpaired" },
+  { "tpope/vim-surround" },
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    commit = "22ef87c6b2039aac069bfba1c5be5cd26c27b752",
     config = function()
       require("lsp_lines").setup()
     end,
   },
   {
     "lukas-reineke/indent-blankline.nvim",
-    commit = "6177a59552e35dfb69e1493fd68194e673dc3ee2",
     config = function()
       require("indent_blankline").setup {
         show_current_context = true,
