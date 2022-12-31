@@ -277,6 +277,7 @@ local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
   { command = "flake8", filetypes = { "python" } },
   { command = "codespell" },
+  { command = "yamllint", filetypes = { "yaml" } },
 }
 
 -- Ansible Vault: securing your editor
