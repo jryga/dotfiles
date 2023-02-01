@@ -10,11 +10,11 @@ export DOTDROP_CONFIG="$XDG_DATA_HOME/dotfiles/config.yaml"
 #export GIT_CONFIG="$XDG_CONFIG_HOME/git/gitconfig"
 export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
 export NVM_DIR="$XDG_DATA_HOME/nvm"
-export GOPATH="$XDG_DATA_HOME/go"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export GVM_ROOT="$XDG_DATA_HOME/gvm"
 
 # Export
-export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin:$XDG_DATA_HOME/fnm"
+export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$CARGO_HOME/bin:$XDG_DATA_HOME/fnm"
 
 # Required for GPG, might be MacOS issue
 export GPG_TTY=$(tty)
@@ -22,6 +22,9 @@ export GPG_TTY=$(tty)
 # EDITOR and VISUAL must go after sourcing
 export EDITOR=lvim
 export VISUAL=lvim
+
+# Source other files
+[ -f "$XDG_CONFIG_HOME/aliases/main.sh" ] && . "$XDG_CONFIG_HOME/aliases/main.sh"
 
 # Setup pyenv
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
@@ -32,5 +35,5 @@ eval "$(pyenv virtualenv-init -)"
 # Setup fnm
 eval "$(fnm env --use-on-cd)"
 
-# Source other files
-[ -f "$XDG_CONFIG_HOME/aliases/main.sh" ] && . "$XDG_CONFIG_HOME/aliases/main.sh"
+# Setup GVM
+. "$GVM_ROOT/scripts/gvm"

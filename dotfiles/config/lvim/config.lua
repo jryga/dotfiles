@@ -56,15 +56,15 @@ lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 
 -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
--- lvim.builtin.which_key.mappings["t"] = {
---   name = "+Trouble",
---   r = { "<cmd>Trouble lsp_references<cr>", "References" },
---   f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
---   d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
---   q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
---   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
---   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
--- }
+lvim.builtin.which_key.mappings["t"] = {
+  name = "+Trouble",
+  r = { "<cmd>Trouble lsp_references<cr>", "References" },
+  f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
+  d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
+  q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
+  l = { "<cmd>Trouble loclist<cr>", "LocationList" },
+  w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
+}
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
@@ -319,9 +319,9 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   end,
 })
 -- trouble keybindings
-lvim.keys.normal_mode["<leader>xx"] = ":TroubleToggle<CR>"
-lvim.keys.normal_mode["<leader>xw"] = ":TroubleToggle workspace_diagnostics<CR>"
-lvim.keys.normal_mode["<leader>xd"] = ":TroubleToggle document_diagnostics<CR>"
-lvim.keys.normal_mode["<leader>xq"] = ":TroubleToggle quickfix<CR>"
-lvim.keys.normal_mode["<leader>xl"] = ":TroubleToggle loclist<CR>"
+-- lvim.keys.normal_mode["<leader>xx"] = ":TroubleToggle<CR>"
+-- lvim.keys.normal_mode["<leader>xw"] = ":TroubleToggle workspace_diagnostics<CR>"
+-- lvim.keys.normal_mode["<leader>xd"] = ":TroubleToggle document_diagnostics<CR>"
+-- lvim.keys.normal_mode["<leader>xq"] = ":TroubleToggle quickfix<CR>"
+-- lvim.keys.normal_mode["<leader>xl"] = ":TroubleToggle loclist<CR>"
 lvim.keys.normal_mode["gR"] = ":TroubleToggle lsp_references<CR>"
