@@ -118,6 +118,11 @@ lvim.builtin.treesitter.highlight.enable = true
 -- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
 -- local opts = {} -- check the lspconfig documentation for a list of all possible options
 -- require("lvim.lsp.manager").setup("pyright", opts)
+require("lvim.lsp.manager").setup("pyright", {
+  pythonPath = "python",
+  venvPath = "python",
+})
+
 
 -- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. !!Requires `:LvimCacheReset` to take effect!!
 -- ---`:LvimInfo` lists which server(s) are skipped for the current filetype
@@ -196,8 +201,9 @@ lvim.builtin.treesitter.highlight.enable = true
 lvim.plugins = {
   { "tpope/vim-unimpaired" },
   { "tpope/vim-surround" },
+  { "NoahTheDuke/vim-just" },
   {
-    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     config = function()
       require("lsp_lines").setup()
     end,
@@ -222,17 +228,6 @@ lvim.plugins = {
     end,
   },
   { "qualiabyte/vim-colorstepper" },
-  {
-    "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("trouble").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end
-  },
   { "chentoast/marks.nvim",
     config = function()
       require("marks").setup {
@@ -295,9 +290,9 @@ end
 lvim.builtin.nvimtree.setup.actions.open_file.resize_window = true
 
 -- lsp_lines
-lvim.lsp.diagnostics.virtual_text = true
 vim.diagnostic.config({
   virtual_lines = false,
+  virtual_text = true,
 })
 
 -- indent_blankline
