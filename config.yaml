@@ -95,6 +95,11 @@ dotfiles:
     dst: ~/.config/aliases/wsl.sh
     link: absolute
     chmod: 740
+  f_alias_arch.sh:
+    src: config/aliases/arch.sh
+    dst: ~/.config/aliases/arch.sh
+    link: absolute
+    chmod: 740
 profiles:
   home:
     dotfiles:
@@ -112,6 +117,7 @@ profiles:
       - f_alias_general.sh
       - f_alias_mac.sh
       - f_alias_wsl.sh
+      - f_alias_arch.sh
 uservariables:
   git_name: git_name
   git_email: git_email
