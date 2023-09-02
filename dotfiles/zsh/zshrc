@@ -130,3 +130,7 @@ function cd() {
     source "$virtualenv_path"
   fi
 }
+
+# fnm
+export PATH="/home/sysadmin/.local/share/fnm:$PATH"
+eval "`fnm env`"
