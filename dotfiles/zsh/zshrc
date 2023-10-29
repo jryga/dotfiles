@@ -130,3 +130,16 @@ function cd() {
     source "$virtualenv_path"
   fi
 }
+
+
+_fzf_comprun() {
+  # https://pragmaticpineapple.com/four-useful-fzf-tricks-for-your-terminal/
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf "$@" --preview 'tree -C {} | head -200' ;;
+    vim)          fzf "$@" --preview 'bat --style=numbers --color=always --line-range :500 {}' ;;
+    *)            fzf "$@" ;;
+  esac
+}
