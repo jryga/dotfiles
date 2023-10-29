@@ -28,6 +28,7 @@ alias ls='exa'
 alias ll='exa -l'
 alias la='exa -laa'
 alias lt='exa -laT'
+alias pf='fzf --preview "bat --style=numbers --color=always --line-range :500 {}"'
 
 # Dump lvim settings to a file
 alias lvdump="lvim --headless +'lua require(\"lvim.utils\").generate_settings()' +qa && sort -o lv-settings.lua{,} && { less lv-settings.lua; \rm lv-settings.lua }"
