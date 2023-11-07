@@ -100,11 +100,11 @@ zinit wait lucid for \
     zsh-users/zsh-completions \
   atload"bindkey '^[[A' history-substring-search-up; bindkey '^[[B' history-substring-search-down" \
     zsh-users/zsh-history-substring-search \
-    OMZP::fzf \
-    OMZP::cp \
-    OMZP::extract \
-    OMZP::jsontools \
-    OMZP::colored-man-pages
+  OMZP::fzf \
+  OMZP::cp \
+  OMZP::extract \
+  OMZP::jsontools \
+  OMZP::colored-man-pages
 
 ### End of Zinit's installer chunk
 
@@ -146,7 +146,7 @@ _fzf_comprun() {
 
   case "$command" in
     cd)           fzf "$@" --preview 'tree -C {} | head -200' ;;
-    vim)          fzf "$@" --preview 'bat --style=numbers --color=always --line-range :500 {}' ;;
+    vim)          eval $FZF_DEFAULT_COMMAND | fzf "$@" --preview 'bat --style=numbers --color=always --line-range :500 {}' ;;
     *)            fzf "$@" ;;
   esac
 }
